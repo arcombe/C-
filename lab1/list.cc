@@ -9,14 +9,12 @@ List::List() {
 
 List::~List() {
 	Node* curr = first->next;
-	Node* prev = first;
 	while (curr != nullptr){
-		delete prev;
-		prev = curr;
+		delete first;
+		first = curr;
 		curr = curr->next;
 	}
 	delete curr;
-	delete prev;
 }
 
 bool List::exists(int d) const {
@@ -48,8 +46,7 @@ void List::insertFirst(int d) {
 
 	if (List::empty())
 	{
-		Node* n = new Node(d, nullptr);
-		first = n;
+		first = new Node(d, nullptr);	
 	} else {
 		Node* n = first;
 		Node* m = new Node(d, n);
@@ -65,9 +62,12 @@ void List::remove(int d, DeleteFlag df) {
 		while (curr != nullptr){
 			if (curr->value == d and prev != nullptr){
 				prev->next = curr->next;
+				delete curr;
 				break;
 			} else if (curr->value == d){
+				prev = first;
 				first = curr->next;
+				delete prev;
 				break;
 			}
 			prev = curr;
@@ -77,9 +77,12 @@ void List::remove(int d, DeleteFlag df) {
 			while (curr != nullptr){
 				if (curr->value < d and prev != nullptr){
 					prev->next = curr->next;
+					delete curr;
 					break;
 				} else if (curr->value < d){
+					prev = first;
 					first = curr->next;
+					delete prev;
 					break;
 				}
 				prev = curr;
@@ -89,9 +92,12 @@ void List::remove(int d, DeleteFlag df) {
 			while (curr != nullptr){
 				if (curr->value > d and prev != nullptr){
 					prev->next = curr->next;
+					delete curr;
 					break;
 				} else if (curr->value > d){
+					prev = first;
 					first = curr->next;
+					delete prev;
 					break;
 				}
 				prev = curr;
