@@ -16,7 +16,6 @@ List::~List() {
 		curr = curr->next;
 	}
 	delete first;
-	delete curr;
 	first=nullptr;
 }
 
