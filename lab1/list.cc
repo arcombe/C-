@@ -8,13 +8,16 @@ List::List() {
 }
 
 List::~List() {
+	if(first==nullptr) return;
 	Node* curr = first->next;
 	while (curr != nullptr){
 		delete first;
 		first = curr;
 		curr = curr->next;
 	}
+	delete first;
 	delete curr;
+	first=nullptr;
 }
 
 bool List::exists(int d) const {
@@ -46,7 +49,7 @@ void List::insertFirst(int d) {
 
 	if (List::empty())
 	{
-		first = new Node(d, nullptr);	
+		first = new Node(d, nullptr);
 	} else {
 		Node* n = first;
 		Node* m = new Node(d, n);
@@ -54,17 +57,24 @@ void List::insertFirst(int d) {
 	}
 
 }
+bool List::compare(int x, int y, DeleteFlag df){
+	switch (df) {
+		case DeleteFlag::EQUAL: return x==y;
+		case DeleteFlag::LESS: return x<y;
+		case DeleteFlag::GREATER: return x>y;
+		default: return false;
+	}
+}
 
 void List::remove(int d, DeleteFlag df) {
 	Node* curr = first;
 	Node* prev = nullptr;
-	if (df == DeleteFlag::EQUAL){
 		while (curr != nullptr){
-			if (curr->value == d and prev != nullptr){
+			if (compare(curr->value, d, df) and prev != nullptr){
 				prev->next = curr->next;
 				delete curr;
 				break;
-			} else if (curr->value == d){
+			} else if (compare(curr->value, d, df)){
 				prev = first;
 				first = curr->next;
 				delete prev;
@@ -73,38 +83,8 @@ void List::remove(int d, DeleteFlag df) {
 			prev = curr;
 			curr = curr->next;
 		}
-	}  else if (df == DeleteFlag::LESS){
-			while (curr != nullptr){
-				if (curr->value < d and prev != nullptr){
-					prev->next = curr->next;
-					delete curr;
-					break;
-				} else if (curr->value < d){
-					prev = first;
-					first = curr->next;
-					delete prev;
-					break;
-				}
-				prev = curr;
-				curr = curr->next;
-			}
-	}	else if (df == DeleteFlag::GREATER){
-			while (curr != nullptr){
-				if (curr->value > d and prev != nullptr){
-					prev->next = curr->next;
-					delete curr;
-					break;
-				} else if (curr->value > d){
-					prev = first;
-					first = curr->next;
-					delete prev;
-					break;
-				}
-				prev = curr;
-				curr = curr->next;
-			}
-		}
-	
+
+
 }
 
 void List::print() const {
@@ -118,6 +98,5 @@ void List::print() const {
 		}
 		cout << endl;
 	}
-	
-}
 
+}
