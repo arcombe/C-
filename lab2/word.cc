@@ -4,10 +4,10 @@
 
 using namespace std;
 
-Word::Word(const string& w, const vector<string>& t) {}
+Word::Word(const string& w, const vector<string>& t) : word(w), trigrams(t) {}
 
 string Word::get_word() const {
-	return string();
+	return word;
 }
 
 unsigned int Word::get_matches(const vector<string>& t) const {

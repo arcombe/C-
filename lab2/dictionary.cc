@@ -8,11 +8,21 @@
 
 using namespace std;
 
-Dictionary::Dictionary() {
+
+Dictionary::Dictionary(const string& filename){
+	ifstream input (filename);
+	if(!input.is_open()) exit(EXIT_FAILURE);
+	string line;
+	while(getline(input, line)){
+			string word = line.substr(0, line.find(" "));
+			words.insert(word);
+	}
 }
 
+Dictionary::Dictionary() : Dictionary("words.txt") {}
+
 bool Dictionary::contains(const string& word) const {
-	return true;
+	return words.count(word);
 }
 
 vector<string> Dictionary::get_suggestions(const string& word) const {
