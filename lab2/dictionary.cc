@@ -3,7 +3,6 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include "word.h"
 #include "dictionary.h"
 
 using namespace std;
@@ -15,14 +14,15 @@ Dictionary::Dictionary(const string& filename){
 	string line;
 	while(getline(input, line)){
 			string word = line.substr(0, line.find(" "));
-			words.insert(word);
+			words_set.insert(word);
+			words[line.length()].push_back(Word(line,))
 	}
 }
 
 Dictionary::Dictionary() : Dictionary("words.txt") {}
 
 bool Dictionary::contains(const string& word) const {
-	return words.count(word);
+	return words_set.count(word);
 }
 
 vector<string> Dictionary::get_suggestions(const string& word) const {

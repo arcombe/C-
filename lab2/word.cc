@@ -11,5 +11,15 @@ string Word::get_word() const {
 }
 
 unsigned int Word::get_matches(const vector<string>& t) const {
-	return 0;
+	unsigned int count = 0;
+	for(string trigram : trigrams){
+		for(string other_trigram : t){
+			int comparison = trigram.compare(other_trigram);
+			if(comparison>=0){
+				if(comparison==0) ++count;
+				break;
+			}
+		}
+	}
+	return count;
 }
