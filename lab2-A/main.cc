@@ -43,10 +43,14 @@ int main(int argc, char const *argv[])
 	// 	cout << q << endl;
 	// 	cout << q.size() << endl;
 	// }
-	Dictionary d;
-	std::vector<string> v;
-	v = d.get_suggestions("correct");
 
+	// Dictionary d;
+	// std::vector<string> v;
+	// v = d.get_suggestions("correct");
+
+	string a = "abc";
+	string b = "abd";
+	cout << a.compare(b) << endl;
 
 
 	return 0;					
