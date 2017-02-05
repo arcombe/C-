@@ -14,7 +14,8 @@ CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wold-style-cast
 CXXFLAGS += -std=c++11
 CXXFLAGS += -g
 CXXFLAGS += $(DEPFLAGS)
-LDFLAGS =   -g
+LDFLAGS = -g -L.
+LDLIBS = -llab1 
 #CPPFLAGS += -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 #LDFLAGS +=  -stdlib=libc++
@@ -22,20 +23,14 @@ LDFLAGS =   -g
 # Targets
 PROGS = ltest encode decode hello
 
-
 all: $(PROGS)
 
 # Targets rely on implicit rules for compiling and linking
 hello: hello.o
-ltest: ltest.o list.o
-decode: decode.o coding.o
-encode: encode.o coding.o
-	# hello.o: hello.cc
-	# ltest.o: ltest.cc list.h
-	# list.o: list.cc list.h
-	# coding.o: coding.cc coding.h
-	# decode.o: decode.cc  coding.h
-	# encode.o: encode.cc coding.h
+ltest: ltest.o 
+decode: decode.o 
+encode: encode.o 
+
 
 
 # Phony targets

@@ -9,6 +9,7 @@ List::List() {
 
 List::~List() {
 	if(first==nullptr) return;
+
 	Node* curr = first->next;
 	while (curr != nullptr){
 		delete first;
