@@ -11,20 +11,35 @@ Date::Date() {
 	day = locTime->tm_mday;
 }
 
-Date::Date(int y, int m, int d) {}
+Date::Date(int y, int m, int d): year(y), month(m), day(d) {}
 
 int Date::getYear() const {
-	return 0;
+	return year;
 }
 
 int Date::getMonth() const {
-	return 0;
+	return month;
 }
 
 int Date::getDay() const {
-	return 0;
+	return day;
 }
 
 void Date::next() {
+	if(day<daysPerMonth[month-1]) {
+									day++;
+	}else{
+									day=1;
+									if(month<12) {
+																	month++;
+									}else{
+																	month=1;
+																	year++;
+									}
+
+	}
 }
 
+std::string operator<<(std::basic_ostream<char> s){
+	return "";
+}
