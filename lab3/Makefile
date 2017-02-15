@@ -20,7 +20,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = tag_remover prime_finder
+PROGS = tag_remover prime_finder date_test
 
 
 all: $(PROGS)
@@ -28,6 +28,9 @@ all: $(PROGS)
 # Targets rely on implicit rules for compiling and linking
 tag_remover: tag_remover.o
 prime_finder: prime_finder.o
+date_test: date_test.o date.o
+date: date.o
+
 
 
 
