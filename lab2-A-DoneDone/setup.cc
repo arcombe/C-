@@ -16,6 +16,7 @@ Setup::Setup() {
 	if (input.is_open())
 	{
 		while(getline(input, line)){
+			// transform(line.begin(), line.end(), line.begin(), ::tolower);
 			triograms = get_Triograms(line);
 			newfile << line << " " << triograms.size();
 			for (string triogram : triograms){
