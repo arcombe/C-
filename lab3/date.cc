@@ -41,7 +41,7 @@ void Date::next() {
 	}
 }
 
-std::ostream& operator<<(std::ostream& out, const Date& d){
+ostream& operator<<(ostream& out, const Date& d){
 	string day;
 	string month;
 	if (d.day < 10) day = to_string(0) + to_string(d.day);
@@ -52,10 +52,10 @@ std::ostream& operator<<(std::ostream& out, const Date& d){
 	return out;
 }
 
-void operator>>(std::istream& in, Date& d){
+void operator>>(istream& in, Date& d){
 	string s;
 	in >> s;
-	
+
 	if (s.size() != 10 || s[4] != '-' || s[7] != '-'){
 		in.setstate(ios_base::failbit);
 	} else {
@@ -74,6 +74,6 @@ void operator>>(std::istream& in, Date& d){
 			in.setstate(ios_base::failbit);
 		}
 
-		
-	} 
+
+	}
 }

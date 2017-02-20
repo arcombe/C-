@@ -92,7 +92,9 @@ int main() {
 	 * The hash table implementation. The size of the hash table is
 	 * a parameter to the constructor.
 	 */
+
 	HNS hns(290024 * 2);
+
 	
 	/*
 	 * data is a vector containing the name/address pairs. Used by the
