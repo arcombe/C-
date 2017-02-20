@@ -29,6 +29,7 @@ BitReference& BitReference::operator=(const BitReference& rhs) {
 	return *this;
 }
 
+
 BitReference::operator bool() const {
 	//
 	// *** IMPLEMENT ***
