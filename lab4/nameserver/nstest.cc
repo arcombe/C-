@@ -2,10 +2,10 @@
  * nstest.cc: a program to test the name server implementations.
  */
 #include "nameserverinterface.h"
-#include "vns.h"
-#include "mns.h"
-#include "umns.h"
-#include "hns.h"
+#include "VNS.h"
+#include "MNS.h"
+#include "UMNS.h"
+#include "HNS.h"
 #include <iostream>
 #include <cassert>
 
@@ -29,14 +29,14 @@ int main() {
 	VNS vns;
 	test(vns);
 	cout << "Vector passed ..." << endl;
-	
+
 	/*
 	 * Test the map name server.
 	 */
 	MNS mns;
 	test(mns);
 	cout << "Map passed ..." << endl;
-	
+
 	/*
 	 * Test the unordered map name server.
 	 */

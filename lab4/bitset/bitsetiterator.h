@@ -15,7 +15,7 @@ public:
 
 
 	bool operator!=(const BitsetIterator& bsi) const {
-		return *ref.p_bits!=*bsi.ref.p_bits || ref.pos!=bsi.ref.pos;
+		return ref.p_bits!=bsi.ref.p_bits || ref.pos!=bsi.ref.pos;
 	}
 
 	BitsetIterator& operator++() {
@@ -38,4 +38,3 @@ private:
 };
 
 #endif
-
